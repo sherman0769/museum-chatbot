@@ -9,9 +9,18 @@ interface ChatWindowProps {
   onSendMessage: (input: string) => void;
   isLoading: boolean;
   isChatInitialized: boolean;
+  inputPlaceholder: string;
+  loadingPlaceholder: string;
 }
 
-export const ChatWindow: React.FC<ChatWindowProps> = ({ messages, onSendMessage, isLoading, isChatInitialized }) => {
+export const ChatWindow: React.FC<ChatWindowProps> = ({
+  messages,
+  onSendMessage,
+  isLoading,
+  isChatInitialized,
+  inputPlaceholder,
+  loadingPlaceholder,
+}) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -28,10 +37,12 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({ messages, onSendMessage,
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <ChatInput 
-        onSendMessage={onSendMessage} 
-        isLoading={isLoading} 
-        isChatInitialized={isChatInitialized} 
+      <ChatInput
+        onSendMessage={onSendMessage}
+        isLoading={isLoading}
+        isChatInitialized={isChatInitialized}
+        inputPlaceholder={inputPlaceholder}
+        loadingPlaceholder={loadingPlaceholder}
       />
     </div>
   );

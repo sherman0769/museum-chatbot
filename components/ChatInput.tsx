@@ -5,6 +5,8 @@ interface ChatInputProps {
   onSendMessage: (input: string) => void;
   isLoading: boolean;
   isChatInitialized: boolean;
+  inputPlaceholder: string;
+  loadingPlaceholder: string;
 }
 
 const SendIcon: React.FC = () => (
@@ -20,7 +22,13 @@ const LoadingSpinnerIcon: React.FC = () => (
   </svg>
 );
 
-export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, isChatInitialized }) => {
+export const ChatInput: React.FC<ChatInputProps> = ({
+  onSendMessage,
+  isLoading,
+  isChatInitialized,
+  inputPlaceholder,
+  loadingPlaceholder,
+}) => {
   const [input, setInput] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -38,7 +46,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, 
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder={!isChatInitialized ? "初始化中，請稍候..." : "請問有什麼想知道的呢？"}
+        placeholder={!isChatInitialized ? loadingPlaceholder : inputPlaceholder}
         className="flex-grow p-3 bg-slate-600 text-slate-100 rounded-lg focus:ring-2 focus:ring-sky-500 focus:outline-none placeholder-slate-400 disabled:opacity-50"
         disabled={isDisabled}
       />
