@@ -1,0 +1,5 @@
+{
+  "name": "Museum Chatbot",
+  "description": "A humorous and polite museum customer service chatbot powered by Gemini API.",
+  "requestFramePermissions": []
+}
